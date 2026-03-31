@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CaseNav from '../../components/CaseNav.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import { cases } from '../../data/cases.js';
+import '../../styles/case.css';
+import '../../styles/case-study.css';
+
+const item = cases.find(c => c.slug === 'kite');
+---
+
+<Layout title={`${item.title} — Daniel Morris`} description={item.shortDesc}>
+  <div class="shell">
+    <main class="main">
+
+      <Nav />
+
+      <a href="/" class="back fadein delay-1">← back</a>
+
+      <!-- Title + tagline + meta -->
+      <header class="case-header fadein delay-2">
+        <h1 class="case-title">
+          <span class="accent">›</span> {item.title}<span class="cursor"></span>
+        </h1>
+        <p class="cs-tagline">{item.tagline}</p>
+        <div class="cs-meta-strip">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">role</span>
+            <span class="cs-meta-value">{item.role}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">timeline</span>
+            <span class="cs-meta-value">{item.timeline}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">platform</span>
+            <span class="cs-meta-value">{item.platform}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">product</span>
+            <a class="cs-meta-value cs-meta-link" href={item.liveUrl} target="_blank" rel="noopener noreferrer">Visit site ↗</a>
+          </div>
+        </div>
+        <div class="tags">
+          {item.tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+      </header>
+
+      <!-- Hero image -->
+      <div class="cs-hero">
+        <img src="/images/kite/hero.jpg" alt="Conversation interface + live store preview" class="cs-hero__img" loading="lazy" />
+      </div>
+
+      <!-- Intro narrative -->
+      <section class="cs-section">
+        <p class="cs-intro-lead">{item.intro[0]}</p>
+        <div class="cs-prose">
+          {item.intro.slice(1).map(para => <p class="cs-text">{para}</p>)}
+        </div>
+      </section>
+
+      <!-- My role -->
+      <section class="cs-section">
+        <p class="cs-label">// my role</p>
+        <div class="cs-prose">
+          {item.role_detail.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+      </section>
+
+      <!-- Finding the right problem -->
+      <section class="cs-section">
+        <p class="cs-label">// finding the right problem</p>
+        <p class="cs-text" style="margin-bottom: 28px;">Rather than a linear process, this was four consecutive bets. Each one had a hypothesis, a way to test it, and a clear reason we moved on.</p>
+
+        <!-- Phase overview -->
+        <div class="cs-phase-nav">
+          {item.pivots.map(pivot => (
+            <div class="cs-phase-nav__item">
+              <span class="cs-phase-nav__num">// {pivot.index}</span>
+              <span class="cs-phase-nav__label">{pivot.heading}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- The four bets -->
+        <div class="cs-bets">
+          {item.pivots.map(pivot => (
+            <div class="cs-bet">
+              <span class="cs-bet__label">Bet {pivot.index}</span>
+              <h2 class="cs-bet__heading">— {pivot.heading}</h2>
+              <div class="cs-bet__body">
+                {pivot.body.map(para => <p class="cs-text">{para}</p>)}
+              </div>
+              {pivot.callout && (
+                <blockquote class="cs-callout">{pivot.callout}</blockquote>
+              )}
+              {pivot.stats && (
+                <div class="cs-insights">
+                  {pivot.stats.map(stat => (
+                    <div class="cs-insight">
+                      <span class="cs-insight__value">{stat.value}</span>
+                      <span class="cs-insight__label">{stat.label}</span>
+                      <span class="cs-insight__note">{stat.note}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Execution -->
+      <section class="cs-section">
+        <p class="cs-label">// execution</p>
+
+        <div class="img-ph img-ph--4x3" style="margin-bottom: 24px; max-width: 480px;">
+          <span class="img-ph__label">Early process — whiteboard / Figma exploration</span>
+        </div>
+
+        <div class="cs-prose" style="margin-bottom: 32px;">
+          {item.execution.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+
+        <div class="cs-grid--2">
+          {item.screenshots.map(screen => (
+            <div class="img-ph img-ph--16x9">
+              <span class="img-ph__label">{screen.label}</span>
+            </div>
+          ))}
+        </div>
+        <div class="cs-grid--2" style="margin-top: 2px;">
+          {item.screenshots.map(screen => (
+            <p class="cs-caption">{screen.caption}</p>
+          ))}
+        </div>
+      </section>
+
+      <!-- Key decisions -->
+      <section class="cs-section">
+        <p class="cs-label">// key decisions</p>
+        <div class="cs-decisions">
+          {item.keyDecisions.map(decision => (
+            <div class="cs-decision">
+              <h2 class="cs-decision__heading">{decision.heading}</h2>
+              <p class="cs-text">{decision.body}</p>
+              <div class="img-ph img-ph--16x9">
+                <span class="img-ph__label">{decision.screenshotLabel}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section class="cs-section">
+        <p class="cs-label">// outcomes</p>
+        <div class="cs-outcomes">
+          {item.outcomes.map(outcome => (
+            <div class="cs-outcome">
+              <span class="cs-outcome__value">{outcome.value}</span>
+              <span class="cs-outcome__label">{outcome.label}</span>
+            </div>
+          ))}
+        </div>
+        <p class="cs-outcomes-note">{item.outcomes_note}</p>
+        {item.nda && (
+          <p class="cs-nda">Note: final design files and prototypes are covered under NDA.</p>
+        )}
+      </section>
+
+      <!-- Reflection -->
+      <section class="cs-section">
+        <p class="cs-label">// reflection</p>
+        <div class="cs-prose">
+          {item.reflection.map(para => <p class="cs-reflection">{para}</p>)}
+        </div>
+      </section>
+
+      <CaseNav items={cases} currentSlug={item.slug} basePath="/cases" />
+
+    </main>
+  </div>
+  <Lightbox />
+</Layout>

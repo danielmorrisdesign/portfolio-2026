@@ -1,0 +1,265 @@
+/* ── Photo placeholders (about-specific) ── */
+
+.about-photo {
+  position: relative;
+  background-color: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.about-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.8;
+}
+
+.about-photo__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  color: var(--text-4);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.about-photo--profile {
+  width: 220px;
+  aspect-ratio: 3 / 4;
+}
+
+.about-photo--wide {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  border-radius: 6px;
+}
+
+img.about-photo {
+  display: block;
+  object-fit: cover;
+}
+
+img.about-photo::before {
+  display: none;
+}
+
+
+/* ── Hero split: photo + intro ── */
+
+.about-hero {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+
+.about-hero__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 8px;
+}
+
+.about-hero__name {
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text-1);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.about-hero__title {
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+}
+
+.about-hero__bio {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.85;
+  max-width: 380px;
+}
+
+.about-hero__links {
+  display: flex;
+  gap: 16px;
+  padding-top: 4px;
+  margin-top: auto;
+}
+
+
+/* ── Wide office photo ── */
+
+.about-wide-photo {
+  margin-left: -32px;
+  margin-right: -32px;
+  margin-bottom: 48px;
+}
+
+
+/* ── Section rhythm ── */
+
+.about-section {
+  margin-bottom: 48px;
+}
+
+.about-label {
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.about-text {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.85;
+  max-width: 620px;
+}
+
+.about-text+.about-text {
+  margin-top: 14px;
+}
+
+
+/* ── Inline link ── */
+
+.inline-link {
+  color: var(--text-2);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.inline-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+
+/* ── Skills / tools ── */
+
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.about-skill {
+  font-size: 12px;
+  color: var(--text-3);
+  border: 1px solid var(--border-dim);
+  border-radius: 3px;
+  padding: 5px 10px;
+  letter-spacing: 0.03em;
+  display: inline-block;
+}
+
+
+/* ── Experience list ── */
+
+.exp-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-dim);
+  align-items: baseline;
+}
+
+.exp-item:last-child {
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.exp-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.exp-company {
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.exp-role {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.exp-period {
+  font-size: 12px;
+  color: var(--text-3);
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+
+/* ── Contact section ── */
+
+.about-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-contact__links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.about-contact__note {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+
+/* ── Mobile ── */
+
+@media (max-width: 600px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-photo--profile {
+    width: 140px;
+  }
+
+  .about-hero__name {
+    font-size: 22px;
+  }
+
+  .about-wide-photo {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  .exp-item {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .exp-period {
+    display: none;
+  }
+}

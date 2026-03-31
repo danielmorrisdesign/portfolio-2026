@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: Array<{ slug: string; title: string }>;
+  currentSlug: string;
+  basePath: string;
+}
+const { items, currentSlug, basePath } = Astro.props;
+const idx = items.findIndex(i => i.slug === currentSlug);
+const prev = items[idx - 1];
+const next = items[idx + 1];
+---
+
+<nav class="case-nav fadein delay-8">
+  <div class="case-nav-slot">
+    {prev && (
+      <a href={`${basePath}/${prev.slug}`} class="case-nav-link">
+        <span class="case-nav-dir">← prev</span>
+        <span class="case-nav-title">{prev.title}</span>
+      </a>
+    )}
+  </div>
+  <div class="case-nav-slot case-nav-right">
+    {next && (
+      <a href={`${basePath}/${next.slug}`} class="case-nav-link">
+        <span class="case-nav-dir">next →</span>
+        <span class="case-nav-title">{next.title}</span>
+      </a>
+    )}
+  </div>
+</nav>

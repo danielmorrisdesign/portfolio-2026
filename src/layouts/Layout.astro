@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import '../styles/layout.css';
+import '../styles/nav.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Daniel Morris — Product Designer',
+  description = 'Lead / Senior Product Designer specialising in developer tools and low-code platforms. Based in Rotterdam.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Daniel Morris" />
+    <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://danielmorris.nl" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={Astro.url.href} />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored ?? (prefersDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script>
+      const btn = document.querySelector('.theme-toggle');
+
+      const applyTheme = (theme: string) => {
+        document.documentElement.classList.add('no-transition');
+        if (theme === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        if (btn) btn.textContent = theme === 'light' ? '☾' : '☀';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            document.documentElement.classList.remove('no-transition');
+          });
+        });
+      };
+
+      // React to live OS theme changes (only when user hasn't set a preference)
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          applyTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+
+      if (btn) {
+        btn.textContent = document.documentElement.getAttribute('data-theme') === 'light' ? '☾' : '☀';
+        btn.addEventListener('click', () => {
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          const next = isLight ? 'dark' : 'light';
+          localStorage.setItem('theme', next);
+          applyTheme(next);
+        });
+      }
+    </script>
+  </body>
+</html>

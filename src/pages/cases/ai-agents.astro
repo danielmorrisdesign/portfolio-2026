@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CaseNav from '../../components/CaseNav.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import { cases } from '../../data/cases.js';
+import '../../styles/case.css';
+import '../../styles/case-study.css';
+
+const item = cases.find(c => c.slug === 'ai-agents');
+---
+
+<Layout title={`${item.title} — Daniel Morris`} description={item.shortDesc}>
+  <div class="shell">
+    <main class="main">
+
+      <Nav />
+
+      <a href="/" class="back fadein delay-1">← back</a>
+
+      <!-- Title + tagline + meta -->
+      <header class="case-header fadein delay-2">
+        <h1 class="case-title">
+          <span class="accent">›</span> {item.title}<span class="cursor"></span>
+        </h1>
+        <p class="cs-tagline">{item.tagline}</p>
+        <div class="cs-meta-strip">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">role</span>
+            <span class="cs-meta-value">{item.role}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">timeline</span>
+            <span class="cs-meta-value">{item.timeline}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">platform</span>
+            <span class="cs-meta-value">{item.platform}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">product</span>
+            <span class="cs-meta-value cs-meta-offline">Offline</span>
+          </div>
+        </div>
+        <div class="tags">
+          {item.tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+      </header>
+
+      <!-- Hero image -->
+      <div class="cs-hero">
+        <div class="img-ph img-ph--wide">
+          <span class="img-ph__label">Agent configuration interface — query creator adapted for agentic AI</span>
+        </div>
+      </div>
+
+      <!-- Intro narrative -->
+      <section class="cs-section">
+        <p class="cs-intro-lead">{item.intro[0]}</p>
+        <div class="cs-prose">
+          {item.intro.slice(1).map(para => <p class="cs-text">{para}</p>)}
+        </div>
+      </section>
+
+      <!-- Context -->
+      <section class="cs-section">
+        <p class="cs-label">// context</p>
+        <div class="cs-prose">
+          {item.context_detail.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+      </section>
+
+      <!-- My role -->
+      <section class="cs-section">
+        <p class="cs-label">// my role</p>
+        <div class="cs-prose">
+          {item.role_detail.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+        {item.role_callout && (
+          <p class="cs-role-callout">{item.role_callout}</p>
+        )}
+      </section>
+
+      <!-- Configuration challenge -->
+      <section class="cs-section">
+        <p class="cs-label">// the configuration challenge</p>
+
+        <div class="cs-prose" style="margin-bottom: 28px;">
+          {item.config.intro.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+
+        <div class="img-ph img-ph--16x9" style="margin-bottom: 32px; max-width: 620px;">
+          <span class="img-ph__label">Query creator — existing interface adapted for agent configuration</span>
+        </div>
+
+        <p class="cs-text" style="margin-bottom: 16px;">I needed to understand:</p>
+        <div class="cs-concepts">
+          {item.config.concepts.map((concept, i) => (
+            <div class="cs-concept">
+              <span class="cs-concept__num">// {String(i + 1).padStart(2, '0')}</span>
+              <div class="cs-concept__body">
+                <span class="cs-concept__heading">{concept.heading}</span>
+                <span class="cs-concept__text">{concept.body}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <blockquote class="cs-callout" style="margin-top: 32px;">{item.config.callout}</blockquote>
+
+        <div class="cs-prose" style="margin-top: 28px; margin-bottom: 32px;">
+          {item.config.outro.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+
+        <div class="cs-grid--2">
+          <div class="img-ph img-ph--16x9">
+            <span class="img-ph__label">Tool calling — surfacing agent capabilities</span>
+          </div>
+          <div class="img-ph img-ph--16x9">
+            <span class="img-ph__label">Model selection — configuration options</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chat interface redesign -->
+      <section class="cs-section">
+        <p class="cs-label">// the chat interface redesign</p>
+
+        <div class="cs-prose" style="margin-bottom: 32px;">
+          {item.chatRedesign.body.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+
+        <div class="cs-split" style="margin-bottom: 32px;">
+          <div class="img-ph img-ph--4x3">
+            <span class="img-ph__label">Before — initial chat design</span>
+          </div>
+          <div class="img-ph img-ph--4x3">
+            <span class="img-ph__label">After — redesigned chat interface</span>
+          </div>
+        </div>
+
+        <blockquote class="cs-callout">{item.chatRedesign.callout}</blockquote>
+      </section>
+
+      <!-- User testing + launch -->
+      <section class="cs-section">
+        <p class="cs-label">// user testing and launch</p>
+
+        <p class="cs-text" style="margin-bottom: 28px;">{item.testing.intro}</p>
+
+        <div class="cs-insights" style="margin-bottom: 32px;">
+          {item.testing.findings.map(finding => (
+            <div class="cs-insight">
+              <span class="cs-insight__value">{finding.value}</span>
+              <span class="cs-insight__label">{finding.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <p class="cs-text" style="margin-bottom: 28px;">{item.testing.launch}</p>
+
+        <div class="img-ph img-ph--16x9" style="max-width: 620px;">
+          <span class="img-ph__label">AI Agents — shipped product</span>
+        </div>
+      </section>
+
+      <!-- Post-launch -->
+      <section class="cs-section">
+        <p class="cs-label">// after launch — and what didn't work</p>
+
+        <div class="cs-prose" style="margin-bottom: 24px;">
+          {item.postLaunch.body.map(para => <p class="cs-text">{para}</p>)}
+        </div>
+
+        <blockquote class="cs-callout">{item.postLaunch.callout}</blockquote>
+      </section>
+
+      <!-- Key decisions -->
+      <section class="cs-section">
+        <p class="cs-label">// key decisions</p>
+        <div class="cs-decisions">
+          {item.keyDecisions.map(decision => (
+            <div class="cs-decision">
+              <h2 class="cs-decision__heading">{decision.heading}</h2>
+              <p class="cs-text">{decision.body}</p>
+              <div class="img-ph img-ph--16x9">
+                <span class="img-ph__label">{decision.screenshotLabel}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Reflection -->
+      <section class="cs-section">
+        <p class="cs-label">// reflection</p>
+        <div class="cs-prose">
+          {item.reflection.map(para => <p class="cs-reflection">{para}</p>)}
+        </div>
+        {item.nda && (
+          <p class="cs-nda" style="margin-top: 32px;">Note: final design files and prototypes are covered under NDA.</p>
+        )}
+      </section>
+
+      <CaseNav items={cases} currentSlug={item.slug} basePath="/cases" />
+
+    </main>
+  </div>
+  <Lightbox />
+</Layout>

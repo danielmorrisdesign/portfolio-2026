@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import CaseNav from '../../components/CaseNav.astro';
+import Carousel from '../../components/Carousel.astro';
+import { cases } from '../../data/cases.js';
+import '../../styles/case.css';
+import '../../styles/case-study.css';
+
+export function getStaticPaths() {
+  return cases.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<Layout title={`${item.title} — Daniel Morris`} description={item.shortDesc}>
+  <div class="shell">
+    <main class="main">
+
+      <Nav />
+
+      <a href="/" class="back fadein delay-1">← back</a>
+
+      <!-- Header -->
+      <header class="case-header fadein delay-2">
+        <h1 class="case-title">
+          <span class="accent">›</span> {item.title}<span class="cursor"></span>
+        </h1>
+        {item.tagline && <p class="cs-tagline">{item.tagline}</p>}
+        <div class="cs-meta-strip">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">role</span>
+            <span class="cs-meta-value">{item.role}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">timeline</span>
+            <span class="cs-meta-value">{item.timeline}</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">platform</span>
+            <span class="cs-meta-value">{item.platform}</span>
+          </div>
+        </div>
+        <div class="tags">
+          {item.tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+      </header>
+
+      <article>
+
+        <!-- Challenge -->
+        <section class="cs-section">
+          <p class="cs-label">// challenge</p>
+          <p class="cs-text">{item.problem}</p>
+          {item.callout && <blockquote class="cs-callout">{item.callout}</blockquote>}
+        </section>
+
+        <!-- Research insights -->
+        {item.insights?.length > 0 && (
+          <section class="cs-section">
+            <p class="cs-label">// research</p>
+            <div class="cs-insights">
+              {item.insights.map(insight => (
+                <div class="cs-insight">
+                  <span class="cs-insight__value">{insight.value}</span>
+                  <span class="cs-insight__label">{insight.label}</span>
+                  <span class="cs-insight__note">{insight.note}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Full-width placeholder -->
+        <section class="cs-section cs-screen-full">
+          <p class="cs-label">// overview</p>
+          <div class="img-ph img-ph--wide">
+            <span class="img-ph__label">Main interface</span>
+          </div>
+          <p class="cs-caption">The primary workspace — the main screen users land on after onboarding.</p>
+        </section>
+
+        <!-- Approach steps -->
+        {item.approach?.length > 0 && (
+          <section class="cs-section">
+            <p class="cs-label">// approach</p>
+            <div class="cs-steps">
+              {item.approach.map(step => (
+                <div class="cs-step">
+                  <span class="cs-step__num">{step.step}</span>
+                  <div class="cs-step__body">
+                    <span class="cs-step__heading">{step.heading}</span>
+                    <p class="cs-step__text">{step.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Split: text left, image right -->
+        <section class="cs-section cs-split">
+          <div class="cs-split__text">
+            <p class="cs-label">// key decision</p>
+            <p class="cs-split__heading">Conversation as the primary input</p>
+            <p class="cs-split__body">We explored several interaction models — form-based, template gallery, drag-and-drop — before committing to a conversation-first approach. The deciding factor was discoverability: new users didn't know what was possible, and a blank canvas gave them nothing to react to.</p>
+          </div>
+          <div class="img-ph img-ph--4x3">
+            <span class="img-ph__label">Conversation panel</span>
+          </div>
+        </section>
+
+        <!-- Split reversed: image left, text right -->
+        <section class="cs-section cs-split cs-split--reverse">
+          <div class="img-ph img-ph--4x3">
+            <span class="img-ph__label">Live preview</span>
+          </div>
+          <div class="cs-split__text">
+            <p class="cs-label">// key decision</p>
+            <p class="cs-split__heading">Live preview over static mockup</p>
+            <p class="cs-split__body">Rather than showing a static template, we built a live preview that updated with every AI response. This kept users anchored in their actual product — not a hypothetical version of it — and reduced the "reveal" anxiety common to AI generation tools.</p>
+          </div>
+        </section>
+
+        <!-- Screens carousel -->
+        {item.screenshots?.length > 0 && (
+          <section class="cs-section">
+            <p class="cs-label">// screens</p>
+            <Carousel slides={item.screenshots} />
+          </section>
+        )}
+
+        <!-- Detail grid -->
+        {item.details?.length > 0 && (
+          <section class="cs-section">
+            <p class="cs-label">// detail</p>
+            <div class="cs-grid">
+              {item.details.map(detail => (
+                <div class="img-ph img-ph--3x2">
+                  <span class="img-ph__label">{detail.label}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Outcomes -->
+        {item.outcomes?.length > 0 && (
+          <section class="cs-section">
+            <p class="cs-label">// outcomes</p>
+            <div class="cs-outcomes">
+              {item.outcomes.map(outcome => (
+                <div class="cs-outcome">
+                  <span class="cs-outcome__value">{outcome.value}</span>
+                  <span class="cs-outcome__label">{outcome.label}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Reflection -->
+        {item.reflection && (
+          <section class="cs-section">
+            <p class="cs-label">// reflection</p>
+            <p class="cs-reflection">{item.reflection}</p>
+          </section>
+        )}
+
+      </article>
+
+      <CaseNav items={cases} currentSlug={item.slug} basePath="/cases" />
+
+      <Footer />
+
+    </main>
+  </div>
+</Layout>

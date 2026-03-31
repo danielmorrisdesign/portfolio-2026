@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/about.css';
+---
+
+<Layout title="About — Daniel Morris" description="About Daniel Morris, product designer based in Rotterdam.">
+  <div class="shell">
+    <main class="main">
+
+      <Nav active="about" wide={true} />
+
+      <section class="about-section">
+      <!-- Hero: profile photo + intro -->
+      <div class="about-hero fadein delay-2">
+        <img src="/images/profile.jpg" alt="Daniel Morris" class="about-photo about-photo--profile" />
+        <div class="about-hero__intro">
+          <div>
+            <h1 class="about-hero__name"><span class="accent">›</span> Daniel Morris<span class="cursor"></span></h1>
+            <p class="about-hero__title">Product Designer</p>
+          </div>
+          <p class="about-hero__bio">
+            I specialise in software for developers and technical users. I enjoy exploring and validating solutions to complex problems through design.
+          </p>
+          <p class="about-hero__bio">
+            Based in Rotterdam, The Netherlands.
+          </p>
+        </div>
+      </div>
+
+      
+        <div class="about-skills">
+          <span class="about-skill">Figma</span>
+          <span class="about-skill">Claude Code</span>
+          <span class="about-skill">Design systems</span>
+          <span class="about-skill">User research</span>
+          <span class="about-skill">Information architecture</span>
+          <span class="about-skill">Prototyping</span>
+          <span class="about-skill">HTML / CSS</span>
+          <span class="about-skill">Developer tools</span>
+          <span class="about-skill">Low-code / no-code</span>
+          <span class="about-skill">Agentic AI</span>
+        </div>
+      </section>
+
+
+      <!-- About -->
+      <section class="about-section fadein delay-4">
+        <p class="about-label">// about</p>
+        <p class="about-text">
+          My background is unusual for a product designer: I started as a frontend developer.
+          That means I've been writing HTML and CSS longer than I've been making Figma files, and
+          I still find it easier to test an idea in code than to simulate it in static frames.
+          That fluency shapes how I work, I stay close to the medium the product ships in.
+        </p>
+        <p class="about-text">
+          I specialise in developer tooling, low-code platforms, and technically complex interfaces;
+          products where the user is smart, the edge cases are real, and vague design decisions
+          have a way of becoming expensive engineering problems. I like the constraint of it.
+        </p>
+        <p class="about-text">
+          I've been working at Appsmith (a remote-first company building enterprise
+          low-code tooling) since 2024. Intially on the core platform, then as lead designer
+          on Kite, an AI-first site and commerce builder for small business owners. Before that,
+          I spent five years at Mendix (part of Siemens) designing low-code software solutions.
+        </p>
+      </section>
+
+       <!-- Wide office photo -->
+      <div class="about-wide-photo fadein delay-3">
+        <img src="/images/office.jpg" alt="Working in office" class="about-photo about-photo--wide" />
+      </div>
+
+      <!-- How I work -->
+      <section class="about-section fadein delay-5">
+        <p class="about-label">// how i work</p>
+        <p class="about-text">
+          I'm most useful when I'm in the room early, before the brief has calcified. I do the
+          research that helps a team understand what problem is actually worth solving, and I stay
+          through the execution to make sure the answer is honest to what was learned.
+        </p>
+        <p class="about-text">
+          I prefer prototyping over presenting. I use Figma for component and system work, and
+          Claude Code to build interactive prototypes: fast enough to be useful in research sessions,
+          real enough that users respond to them honestly.
+        </p>
+      </section>
+
+      <Footer />
+
+    </main>
+  </div>
+</Layout>

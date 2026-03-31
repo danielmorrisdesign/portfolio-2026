@@ -1,0 +1,18 @@
+---
+interface Props {
+  active?: string;
+  wide?: boolean;
+}
+const { active, wide = false } = Astro.props;
+const workHref = wide ? '#work' : '/#work';
+---
+
+<nav class:list={['nav', 'fadein', { 'nav--wide': wide }]}>
+  <a href="/" class="logo"><span class="logo-chevron">›</span>DANIEL MORRIS</a>
+  <div class="nav-links">
+    <a href="/about" class:list={['nav-link', { active: active === 'about' }]}>about</a>
+    <a href="https://www.linkedin.com/in/danielmorrisdesign" class:list={['nav-link', { active: active === 'linkedin' }]}>linkedin</a>
+    <a href="mailto:hello@danielmorris.nl" class="nav-link">say hello</a>
+    <button class="theme-toggle" aria-label="Toggle theme"></button>
+  </div>
+</nav>

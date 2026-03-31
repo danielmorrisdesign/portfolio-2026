@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(find /Users/danielmorris/Sites/danielmorris-portfolio/src -type f \\\\\\( -name \"*.json\" -o -name \"*.config.*\" -o -name \"tailwind*\" \\\\\\) 2>/dev/null | grep -v node_modules)",
+      "Bash(grep -r \"background:\\\\|color:\\\\|#[0-9a-fA-F]\\\\|rgb\" /Users/danielmorris/Sites/danielmorris-portfolio/src --include=\"*.astro\" --include=\"*.css\" 2>/dev/null | grep -v node_modules)",
+      "Bash(open:*)",
+      "Bash(curl -s http://localhost:4321/)",
+      "Bash(curl -s http://localhost:4321/about)",
+      "Bash(curl -s http://localhost:4321/cases/kite)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/cases/kite)",
+      "Bash(grep:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(xargs ls:*)",
+      "Bash(gh auth:*)",
+      "Bash(brew install:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

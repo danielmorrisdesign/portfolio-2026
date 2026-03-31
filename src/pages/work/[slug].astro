@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import CaseNav from '../../components/CaseNav.astro';
+import { work } from '../../data/work.js';
+import '../../styles/case.css';
+
+export function getStaticPaths() {
+  return work.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<Layout title={`${item.title} — Daniel Morris`} description={item.shortDesc}>
+  <div class="shell">
+    <main class="main">
+
+      <Nav />
+
+      <a href="/" class="back fadein delay-1">← back</a>
+
+      <header class="case-header fadein delay-2">
+        <h1 class="case-title">
+          <span class="accent">›</span> {item.title}<span class="cursor"></span>
+        </h1>
+        <div class="case-meta">
+          <span class="meta-role">{item.role}</span>
+          <span class="meta-sep">·</span>
+          <span class="meta-period">{item.period}</span>
+        </div>
+        <div class="tags">
+          {item.tags.map(tag => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <article class="case-body">
+
+        <section class="case-section fadein delay-3">
+          <p class="section-label">// context</p>
+          <p class="section-text">{item.problem}</p>
+        </section>
+
+        <section class="case-section fadein delay-4">
+          <p class="section-label">// what i did</p>
+          <p class="section-text">{item.what}</p>
+        </section>
+
+        <section class="case-section fadein delay-6">
+          <p class="section-label">// outcome</p>
+          <p class="section-text">{item.outcome}</p>
+        </section>
+
+        {item.artifacts.length > 0 && (
+          <section class="case-section fadein delay-7">
+            <p class="section-label">// screens</p>
+            <div class="artifacts">
+              {item.artifacts.map(src => (
+                <img src={src} alt="" class="artifact-img" loading="lazy" />
+              ))}
+            </div>
+          </section>
+        )}
+
+      </article>
+
+      <CaseNav items={work} currentSlug={item.slug} basePath="/work" />
+
+      <Footer />
+
+    </main>
+  </div>
+</Layout>
