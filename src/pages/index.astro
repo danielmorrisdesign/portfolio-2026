@@ -30,10 +30,12 @@ import '../styles/home.css';
           {cases.map((item) => (
             <a href={`/cases/${item.slug}`} class="case-card">
               <div class="case-card-header">
-                <span class="case-card-title">{item.title}</span>
+                <div class="case-card-heading">
+                  <span class="case-card-title">{item.title}</span>
+                  <p class="case-card-context">{item.context}</p>
+                </div>
                 <span class="case-card-arrow">→</span>
               </div>
-              <p class="case-card-context">{item.context}</p>
               <p class="case-card-desc">{item.shortDesc}</p>
               <div class="case-card-tags">
                 {item.tags.map(tag => <span class="case-card-tag">{tag}</span>)}

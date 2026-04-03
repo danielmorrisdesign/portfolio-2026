@@ -10,7 +10,7 @@ import '../../styles/case-study.css';
 const item = cases.find(c => c.slug === 'kite');
 ---
 
-<Layout title={`${item.title} — Daniel Morris`} description={item.shortDesc}>
+<Layout title={`${item.title} | Daniel Morris`} description={item.shortDesc}>
   <div class="shell">
     <main class="main">
 
@@ -66,12 +66,17 @@ const item = cases.find(c => c.slug === 'kite');
         <div class="cs-prose">
           {item.role_detail.map(para => <p class="cs-text">{para}</p>)}
         </div>
+        {item.responsibilities && (
+          <div class="cs-responsibilities">
+            {item.responsibilities.map(r => <span class="cs-responsibility">{r}</span>)}
+          </div>
+        )}
       </section>
 
       <!-- Finding the right problem -->
       <section class="cs-section">
         <p class="cs-label">// finding the right problem</p>
-        <p class="cs-text" style="margin-bottom: 28px;">Rather than a linear process, this was four consecutive bets. Each one had a hypothesis, a way to test it, and a clear reason we moved on.</p>
+        <p class="cs-text" style="margin-bottom: 28px;">We knew from the start that we wanted to build something AI-first that could become Appsmith's new flagship product. What we didn't know was what that product should be, or who it was for. Our first instinct was to stay close to what we knew: an AI-first tool for the enterprise low-code market we'd already been serving. When that didn't hold up, we evolved the concept rather than scrapping it, decoupling from LCAP's structure but staying focused on internal tools and developers. We did significant research in that space, ran user tests with real developers, and built a real product. We even added voice as a differentiator. But we kept running into the same problem: no clear market position. By that point the vibe-coding window for a general-purpose internal tool builder had closed. So we made a deliberate choice to change direction entirely, find a specific niche where the product we'd built could actually win. That's what led us to small business ecommerce.</p>
 
         <!-- Phase overview -->
         <div class="cs-phase-nav">
@@ -83,14 +88,54 @@ const item = cases.find(c => c.slug === 'kite');
           ))}
         </div>
 
-        <!-- The four bets -->
+        <!-- The pivots -->
         <div class="cs-bets">
           {item.pivots.map(pivot => (
             <div class="cs-bet">
-              <span class="cs-bet__label">Bet {pivot.index}</span>
-              <h2 class="cs-bet__heading">— {pivot.heading}</h2>
+              <span class="cs-bet__label">// {pivot.index}</span>
+              <h2 class="cs-bet__heading">{pivot.heading}</h2>
               <div class="cs-bet__body">
-                {pivot.body.map(para => <p class="cs-text">{para}</p>)}
+                {pivot.body.map((para, i) => (
+                  <>
+                    <p class="cs-text">{para}</p>
+                    {pivot.screenshots && (() => {
+                      const atIndex = pivot.screenshots.filter(s => s.after === i);
+                      if (atIndex.length === 0) return null;
+                      if (atIndex.length === 1) return (
+                        <div class="cs-screen-full">
+                          <img src={atIndex[0].src} alt={atIndex[0].label} class="cs-hero__img" />
+                          <p class="cs-caption">{atIndex[0].label}</p>
+                        </div>
+                      );
+                      return (
+                        <div class="cs-pivot-screens">
+                          {atIndex.map(s => (
+                            <figure class="cs-pivot-screen">
+                              <img src={s.src} alt={s.label} />
+                              <figcaption class="cs-caption">{s.label}</figcaption>
+                            </figure>
+                          ))}
+                        </div>
+                      );
+                    })()}
+                    {pivot.pipeline && i === 1 && (
+                      <div class="cs-pipeline">
+                        {pivot.pipeline.map((node, j) => (
+                          <>
+                            <div class={`cs-pipeline__node${node.anchor ? ' cs-pipeline__node--anchor' : ''}`}>
+                              <span class="cs-pipeline__num">0{j + 1}</span>
+                              <span class="cs-pipeline__label">{node.label}</span>
+                              <span class="cs-pipeline__desc">{node.desc}</span>
+                            </div>
+                            {j < pivot.pipeline.length - 1 && (
+                              <span class="cs-pipeline__arrow">→</span>
+                            )}
+                          </>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ))}
               </div>
               {pivot.callout && (
                 <blockquote class="cs-callout">{pivot.callout}</blockquote>
@@ -116,7 +161,7 @@ const item = cases.find(c => c.slug === 'kite');
         <p class="cs-label">// execution</p>
 
         <div class="img-ph img-ph--4x3" style="margin-bottom: 24px; max-width: 480px;">
-          <span class="img-ph__label">Early process — whiteboard / Figma exploration</span>
+          <span class="img-ph__label">Early process: whiteboard / Figma exploration</span>
         </div>
 
         <div class="cs-prose" style="margin-bottom: 32px;">

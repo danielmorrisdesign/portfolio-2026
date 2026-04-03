@@ -23,7 +23,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--text-4);
   letter-spacing: 0.06em;
   white-space: nowrap;
@@ -68,7 +68,8 @@ img.about-photo::before {
 }
 
 .about-hero__name {
-  font-size: 28px;
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
   font-weight: 400;
   color: var(--text-1);
   line-height: 1.2;
@@ -77,14 +78,15 @@ img.about-photo::before {
 }
 
 .about-hero__title {
-  font-size: 13px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
   color: var(--accent);
   letter-spacing: 0.06em;
   opacity: 0.8;
 }
 
 .about-hero__bio {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--text-2);
   line-height: 1.85;
   max-width: 380px;
@@ -114,15 +116,17 @@ img.about-photo::before {
 }
 
 .about-label {
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
   color: var(--accent);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   margin-bottom: 16px;
   opacity: 0.7;
 }
 
 .about-text {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--text-2);
   line-height: 1.85;
   max-width: 620px;
@@ -157,7 +161,8 @@ img.about-photo::before {
 }
 
 .about-skill {
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--text-3);
   border: 1px solid var(--border-dim);
   border-radius: 3px;
@@ -194,17 +199,17 @@ img.about-photo::before {
 }
 
 .exp-company {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--text-2);
 }
 
 .exp-role {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--text-3);
 }
 
 .exp-period {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--text-3);
   white-space: nowrap;
   opacity: 0.7;
@@ -226,7 +231,7 @@ img.about-photo::before {
 }
 
 .about-contact__note {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--text-3);
   margin-top: 4px;
   font-style: italic;
@@ -246,7 +251,7 @@ img.about-photo::before {
   }
 
   .about-hero__name {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 
   .about-wide-photo {

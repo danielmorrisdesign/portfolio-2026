@@ -18,7 +18,7 @@ export function getStaticPaths() {
 const { item } = Astro.props;
 ---
 
-<Layout title={`${item.title} — Daniel Morris`} description={item.shortDesc}>
+<Layout title={`${item.title} | Daniel Morris`} description={item.shortDesc}>
   <div class="shell">
     <main class="main">
 
@@ -82,7 +82,7 @@ const { item } = Astro.props;
           <div class="img-ph img-ph--wide">
             <span class="img-ph__label">Main interface</span>
           </div>
-          <p class="cs-caption">The primary workspace — the main screen users land on after onboarding.</p>
+          <p class="cs-caption">The primary workspace: the main screen users land on after onboarding.</p>
         </section>
 
         <!-- Approach steps -->
@@ -108,7 +108,7 @@ const { item } = Astro.props;
           <div class="cs-split__text">
             <p class="cs-label">// key decision</p>
             <p class="cs-split__heading">Conversation as the primary input</p>
-            <p class="cs-split__body">We explored several interaction models — form-based, template gallery, drag-and-drop — before committing to a conversation-first approach. The deciding factor was discoverability: new users didn't know what was possible, and a blank canvas gave them nothing to react to.</p>
+            <p class="cs-split__body">We explored several interaction models (form-based, template gallery, drag-and-drop) before committing to a conversation-first approach. The deciding factor was discoverability: new users didn't know what was possible, and a blank canvas gave them nothing to react to.</p>
           </div>
           <div class="img-ph img-ph--4x3">
             <span class="img-ph__label">Conversation panel</span>
@@ -123,7 +123,7 @@ const { item } = Astro.props;
           <div class="cs-split__text">
             <p class="cs-label">// key decision</p>
             <p class="cs-split__heading">Live preview over static mockup</p>
-            <p class="cs-split__body">Rather than showing a static template, we built a live preview that updated with every AI response. This kept users anchored in their actual product — not a hypothetical version of it — and reduced the "reveal" anxiety common to AI generation tools.</p>
+            <p class="cs-split__body">Rather than showing a static template, we built a live preview that updated with every AI response. This kept users anchored in their actual product rather than a hypothetical version, reducing the "reveal" anxiety common to AI generation tools.</p>
           </div>
         </section>
 
