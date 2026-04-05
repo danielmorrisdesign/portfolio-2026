@@ -71,12 +71,18 @@ export const cases = [
       {
         index: '03',
         heading: 'Voice-first',
+        screenshots: [
+          { src: '/images/kite/voice-wireframe.png', label: 'Early wireframe exploration of the voice conversation flow', after: 0 },
+          { src: '/images/kite/voice.png', label: 'Visual exploration: voice interface and overall product direction', after: 2 },
+        ],
         body: [
-          `We didn't abandon the internal tool direction. We added to it. Voice became the proposed differentiator: the same product, but with speech as the primary input. Users could literally talk their way through building a tool in real time, with the AI generating output as they spoke.`,
-          `Testing was genuinely exciting. Users loved it. The first experience felt like nothing else on the market.`,
-          `But it couldn't hold up. Voice added hard dependencies on third-party platforms, latency we couldn't control, and failure modes that were difficult to design around. And when we looked honestly at what we had, delight in a prototype session wasn't enough. We still hadn't solved the market positioning problem. Voice was a compelling layer on top of a product that still lacked a clear reason to exist for a specific audience.`,
+          `The PM ran a quick prototype test to validate the idea. Users loved it immediately. That was enough to green-light it. I started exploring the conversation flow in wireframes, working out how voice input would integrate with the existing build pipeline and what the interaction model should feel like.`,
+          `Engineering integrated VAPI to handle voice input, layering a speech agent on top of the existing conversation and build pipeline. On the design side, voice pushed us to think more ambitiously about product identity. I explored animation to represent AI state and worked on a broader visual direction for the interface, something that made the product feel alive and reactive while it listened and built. The first working prototype was genuinely exciting to use.`,
+          `But the more we pushed it, the more the architecture worked against us. Voice meant adding another agent to a chain that already had multiple moving parts: speech recognition, conversation, spec generation, preview builder, app builder. Each handoff was a new surface for failure. Latency stacked up between turns. Designing the conversation itself turned out to be its own hard problem: how long to wait, how many questions to ask, when to start building. Users wanted quick results but also wanted to feel in control while it was happening. We never quite solved that balance.`,
+          `Meanwhile, tools like Lovable were raising the quality bar on AI-generated output to a level that made it clear we'd missed the window for a general-purpose vibe coding product. Voice had been a genuine differentiator in testing, but it was solving for delight in a market that was already moving on. We had strong technology and no clear audience. That's what led us to an in-person hackathon in India, where we set aside everything we'd built and asked a completely different question.`,
         ],
         callout: `"I can't believe I just built that by talking."`,
+        calloutAfter: 1,
       },
       {
         index: '04',

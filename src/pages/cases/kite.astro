@@ -118,6 +118,9 @@ const item = cases.find(c => c.slug === 'kite');
                         </div>
                       );
                     })()}
+                    {pivot.callout && pivot.calloutAfter === i && (
+                      <blockquote class="cs-callout">{pivot.callout}</blockquote>
+                    )}
                     {pivot.pipeline && i === 1 && (
                       <div class="cs-pipeline">
                         {pivot.pipeline.map((node, j) => (
@@ -137,7 +140,7 @@ const item = cases.find(c => c.slug === 'kite');
                   </>
                 ))}
               </div>
-              {pivot.callout && (
+              {pivot.callout && pivot.calloutAfter === undefined && (
                 <blockquote class="cs-callout">{pivot.callout}</blockquote>
               )}
               {pivot.stats && (
