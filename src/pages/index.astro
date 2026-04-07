@@ -27,7 +27,7 @@ import '../styles/home.css';
       <section class="cases fadein delay-7">
         <p class="section-label">// cases</p>
         <div class="cases-grid">
-          {cases.map((item) => (
+          {cases.filter(item => item.slug === 'kite').map((item) => (
             <a href={`/cases/${item.slug}`} class="case-card">
               <div class="case-card-header">
                 <div class="case-card-heading">

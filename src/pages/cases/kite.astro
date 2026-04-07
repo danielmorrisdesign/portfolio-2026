@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
-import CaseNav from '../../components/CaseNav.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import { cases } from '../../data/cases.js';
 import '../../styles/case.css';
@@ -15,8 +14,6 @@ const item = cases.find(c => c.slug === 'kite');
     <main class="main">
 
       <Nav />
-
-      <a href="/" class="back fadein delay-1">← back</a>
 
       <!-- Title + tagline + meta -->
       <header class="case-header fadein delay-2">
@@ -47,11 +44,6 @@ const item = cases.find(c => c.slug === 'kite');
         </div>
       </header>
 
-      <!-- Hero image -->
-      <div class="cs-hero">
-        <img src="/images/kite/hero.jpg" alt="Conversation interface + live store preview" class="cs-hero__img" loading="lazy" />
-      </div>
-
       <!-- Intro narrative -->
       <section class="cs-section">
         <p class="cs-intro-lead">{item.intro[0]}</p>
@@ -59,6 +51,11 @@ const item = cases.find(c => c.slug === 'kite');
           {item.intro.slice(1).map(para => <p class="cs-text">{para}</p>)}
         </div>
       </section>
+
+      <!-- Hero image -->
+      <div class="cs-hero">
+        <img src="/images/kite/hero.jpg" alt="Conversation interface + live store preview" class="cs-hero__img" loading="lazy" />
+      </div>
 
       <!-- My role -->
       <section class="cs-section">
@@ -76,14 +73,15 @@ const item = cases.find(c => c.slug === 'kite');
       <!-- Finding the right problem -->
       <section class="cs-section">
         <p class="cs-label">// finding the right problem</p>
-        <p class="cs-text" style="margin-bottom: 28px;">We knew from the start that we wanted to build something AI-first that could become Appsmith's new flagship product. What we didn't know was what that product should be, or who it was for. Our first instinct was to stay close to what we knew: an AI-first tool for the enterprise low-code market we'd already been serving. When that didn't hold up, we evolved the concept rather than scrapping it, decoupling from LCAP's structure but staying focused on internal tools and developers. We did significant research in that space, ran user tests with real developers, and built a real product. We even added voice as a differentiator. But we kept running into the same problem: no clear market position. By that point the vibe-coding window for a general-purpose internal tool builder had closed. So we made a deliberate choice to change direction entirely, find a specific niche where the product we'd built could actually win. That's what led us to small business ecommerce.</p>
+        <p class="cs-text" style="margin-bottom: 28px;">The brief was open-ended: build something AI-first that could become Appsmith's next flagship. We didn't know what that was or who it was for. Each pivot below was a real commitment — research, prototypes, user tests — before we had the signal to move on.</p>
 
         <!-- Phase overview -->
         <div class="cs-phase-nav">
-          {item.pivots.map(pivot => (
-            <div class="cs-phase-nav__item">
+          {item.pivots.map((pivot, i) => (
+            <div class={`cs-phase-nav__item${pivot.status ? ` cs-phase-nav__item--${pivot.status}` : ''}${i === item.pivots.length - 1 ? ' cs-phase-nav__item--last' : ''}${i === 1 ? ' cs-phase-nav__item--pre-tangent' : ''}`}>
               <span class="cs-phase-nav__num">// {pivot.index}</span>
               <span class="cs-phase-nav__label">{pivot.heading}</span>
+              {pivot.status === 'scrapped' && <span class="cs-phase-nav__tag">scrapped</span>}
             </div>
           ))}
         </div>
@@ -94,6 +92,8 @@ const item = cases.find(c => c.slug === 'kite');
             <div class="cs-bet">
               <span class="cs-bet__label">// {pivot.index}</span>
               <h2 class="cs-bet__heading">{pivot.heading}</h2>
+              {pivot.takeaway && <p class="cs-pivot-takeaway">{pivot.takeaway}</p>}
+              {pivot.framing && <p class="cs-pivot-framing">{pivot.framing}</p>}
               <div class="cs-bet__body">
                 {pivot.body.map((para, i) => (
                   <>
@@ -159,31 +159,6 @@ const item = cases.find(c => c.slug === 'kite');
         </div>
       </section>
 
-      <!-- Execution -->
-      <section class="cs-section">
-        <p class="cs-label">// execution</p>
-
-        <div class="img-ph img-ph--4x3" style="margin-bottom: 24px; max-width: 480px;">
-          <span class="img-ph__label">Early process: whiteboard / Figma exploration</span>
-        </div>
-
-        <div class="cs-prose" style="margin-bottom: 32px;">
-          {item.execution.map(para => <p class="cs-text">{para}</p>)}
-        </div>
-
-        <div class="cs-grid--2">
-          {item.screenshots.map(screen => (
-            <div class="img-ph img-ph--16x9">
-              <span class="img-ph__label">{screen.label}</span>
-            </div>
-          ))}
-        </div>
-        <div class="cs-grid--2" style="margin-top: 2px;">
-          {item.screenshots.map(screen => (
-            <p class="cs-caption">{screen.caption}</p>
-          ))}
-        </div>
-      </section>
 
       <!-- Key decisions -->
       <section class="cs-section">
@@ -193,9 +168,20 @@ const item = cases.find(c => c.slug === 'kite');
             <div class="cs-decision">
               <h2 class="cs-decision__heading">{decision.heading}</h2>
               <p class="cs-text">{decision.body}</p>
-              <div class="img-ph img-ph--16x9">
-                <span class="img-ph__label">{decision.screenshotLabel}</span>
-              </div>
+              {decision.screenshots && decision.screenshots.length > 0 ? (
+                <div class={`cs-decision-screens cs-decision-screens--${decision.screenshots.length}`}>
+                  {decision.screenshots.map(s => (
+                    <figure class="cs-decision-screen">
+                      <img src={s.src} alt={s.label} />
+                      <figcaption class="cs-caption">{s.label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <div class="img-ph img-ph--16x9">
+                  <span class="img-ph__label">{decision.screenshotLabel}</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -225,8 +211,6 @@ const item = cases.find(c => c.slug === 'kite');
           {item.reflection.map(para => <p class="cs-reflection">{para}</p>)}
         </div>
       </section>
-
-      <CaseNav items={cases} currentSlug={item.slug} basePath="/cases" />
 
     </main>
   </div>

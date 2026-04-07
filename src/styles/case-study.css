@@ -484,14 +484,58 @@
 
 .cs-phase-nav__item {
   padding: 14px 16px;
-  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 5px;
+  position: relative;
 }
 
-.cs-phase-nav__item:last-child {
-  border-right: none;
+/* Arrow between 01→02: forward momentum */
+.cs-phase-nav__item:not(.cs-phase-nav__item--last):not(.cs-phase-nav__item--scrapped):not(.cs-phase-nav__item--pre-tangent)::after {
+  content: '»';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* Arrow between 02→03: tangent indicator */
+.cs-phase-nav__item--pre-tangent::after {
+  content: '↳';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text-2);
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* 03: scrapped — dimmed */
+.cs-phase-nav__item--scrapped {
+  opacity: 0.45;
+}
+
+/* 04: outcome — subtle accent border-left */
+.cs-phase-nav__item--outcome {
+  border-left: 2px solid var(--accent);
+}
+
+.cs-phase-nav__tag {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--text-2);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  opacity: 0.6;
+  margin-top: 2px;
 }
 
 .cs-phase-nav__num {
@@ -551,6 +595,24 @@
   gap: 14px;
 }
 
+.cs-pivot-takeaway {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  opacity: 0.85;
+  line-height: 1.5;
+  margin-bottom: 2px;
+}
+
+.cs-pivot-framing {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-2);
+  opacity: 0.6;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
 
 /* ── 2-column screenshot grid ── */
 
@@ -581,6 +643,32 @@
   color: var(--text-1);
   font-weight: 400;
   line-height: 1.4;
+}
+
+.cs-decision-screens {
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.cs-decision-screens--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cs-decision-screens--4 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cs-decision-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cs-decision-screen img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 
