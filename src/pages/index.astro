@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { work } from '../data/work.js';
-import { cases } from '../data/cases.js';
 import '../styles/home.css';
 ---
 
@@ -20,28 +19,6 @@ import '../styles/home.css';
         </h1>
         <div class="hero-intro fadein delay-3">
           <p>I'm a product designer specialising in software for developers and technical users. I enjoy exploring and validating solutions to complex problems through design.</p>
-        </div>
-      </section>
-
-      <!-- Featured cases -->
-      <section class="cases fadein delay-7">
-        <p class="section-label">// cases</p>
-        <div class="cases-grid">
-          {cases.filter(item => item.slug === 'kite').map((item) => (
-            <a href={`/cases/${item.slug}`} class="case-card">
-              <div class="case-card-header">
-                <div class="case-card-heading">
-                  <span class="case-card-title">{item.title}</span>
-                  <p class="case-card-context">{item.context}</p>
-                </div>
-                <span class="case-card-arrow">→</span>
-              </div>
-              <p class="case-card-desc">{item.shortDesc}</p>
-              <div class="case-card-tags">
-                {item.tags.map(tag => <span class="case-card-tag">{tag}</span>)}
-              </div>
-            </a>
-          ))}
         </div>
       </section>
 
