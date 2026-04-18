@@ -1,6 +1,7 @@
 export const work = [
   {
     slug: 'appsmith',
+    url: 'https://www.appsmith.com',
     index: '01',
     title: 'Appsmith',
     role: 'Product Designer',
@@ -14,6 +15,7 @@ export const work = [
   },
   {
     slug: 'mendix',
+    url: 'https://www.mendix.com',
     index: '02',
     title: 'Mendix / Siemens',
     role: 'Product Designer',
@@ -27,6 +29,7 @@ export const work = [
   },
   {
     slug: 'bynder',
+    url: 'https://www.bynder.com',
     index: '03',
     title: 'Bynder',
     role: 'Product Designer',
@@ -40,6 +43,7 @@ export const work = [
   },
   {
     slug: 'awkward',
+    url: 'https://www.awkward.co',
     index: '04',
     title: 'Awkward',
     role: 'Product Designer',
@@ -53,6 +57,7 @@ export const work = [
   },
   {
     slug: 'cognizant',
+    url: 'https://www.cognizant.com',
     index: '05',
     title: 'Cognizant',
     role: 'Frontend Developer',
@@ -66,6 +71,7 @@ export const work = [
   },
   {
     slug: 'vi-company',
+    url: 'https://www.vicompany.nl',
     index: '06',
     title: 'VI Company',
     role: 'Junior Frontend Developer',
@@ -79,6 +85,7 @@ export const work = [
   },
   {
     slug: 'just',
+    url: 'https://www.wearejust.com',
     index: '07',
     title: 'Just',
     role: 'Design Intern',

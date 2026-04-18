@@ -28,13 +28,12 @@ import '../styles/home.css';
         <ul class="work-list">
           {work.map((item, i) => (
             <li class="work-item fadein" style={`--delay: ${0.35 + i * 0.07}s`}>
-              <a href={`/work/${item.slug}`} class="work-link">
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="work-link">
                 <div class="work-body">
                   <span class="work-title">{item.title}</span>
                   <span class="work-tags">{item.tags.join(' · ')}</span>
                 </div>
                 <span class="work-period">{item.period}</span>
-                <span class="work-arrow">→</span>
               </a>
             </li>
           ))}

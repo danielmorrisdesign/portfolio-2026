@@ -167,10 +167,6 @@
   color: var(--accent);
 }
 
-.work-link:hover .work-arrow {
-  color: var(--accent);
-  transform: translateX(3px);
-}
 
 .work-index {
   font-family: var(--font-mono);
@@ -207,13 +203,6 @@
   white-space: nowrap;
 }
 
-.work-arrow {
-  font-size: 0.875rem;
-  color: var(--text-3);
-  transition: color 0.15s, transform 0.15s;
-  min-width: 16px;
-  text-align: right;
-}
 
 /* Mobile */
 @media (max-width: 600px) {
