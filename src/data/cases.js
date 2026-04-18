@@ -13,9 +13,8 @@ export const cases = [
     shortDesc: 'Led design across ten months of product exploration, landing on an AI-driven site and commerce builder for non-technical small business owners.',
 
     intro: [
-      `Kite is an AI-powered ecommerce site builder for small business owners. I led design from zero — no brief, no defined market — through ten months of research, pivots, and prototyping, to a product that shipped.`,
-      `Appsmith made the decision to stop iterating on its existing low-code platform and build something entirely new. The brief was intentionally open: create an AI-first product that could define the company's next chapter. As Lead Product Designer, I was in the core decision-making loop from day one, working directly with leadership, marketing, and product on both direction and execution.`,
-      `Getting there wasn't a straight line. We changed target user, interaction model, and product category before landing on something worth building.`,
+      `Kite is an AI-powered ecommerce site builder for small business owners: describe your business, choose a visual direction, and have a live store in minutes. I was Lead Product Designer from day one, responsible for both the direction the product took and how it looked when it shipped.`,
+      `Appsmith's brief was open by design: stop iterating on the existing platform, build something AI-first, figure out the rest. No target user, no product category. The decisions below are mine: what I believed, how I tested it, and what changed my mind.`,
     ],
 
     responsibilities: [
@@ -29,75 +28,16 @@ export const cases = [
     ],
 
     role_detail: [
-      `On the design side, I worked closely with one senior designer: he owned interaction-level UI and engineering specs; I drove information architecture, visual design direction, research framing, and functional prototyping.`,
+      `I worked alongside one senior designer throughout: he owned interaction-level UI and engineering handoff; I led information architecture, visual design direction, research strategy, and functional prototyping. I was also in the core decision-making loop with leadership. The product direction decisions documented here were mine to shape, not just execute on.`,
     ],
 
-    pivots: [
-      {
-        index: '01',
-        heading: 'Enterprise low-code',
-        takeaway: 'The LCAP market was stalling and LLMs don\'t fit its constraints.',
-        body: [
-          `We stayed close to what Appsmith knew: an AI-first tool for the enterprise low-code market. The architecture was a three-model pipeline anchored by a spec sheet — a structured intermediate layer that gave us control over output. The spec sheet held up and carried into later work. The LCAP context didn't: LLMs generate freely, LCAP constrains tightly, and the market itself was showing no meaningful growth.`,
-        ],
-        pipeline: [
-          { label: 'Conversation model', desc: 'Interprets user intent through dialogue' },
-          { label: 'Spec sheet', desc: 'Structured intermediate layer derived from the conversation', anchor: true },
-          { label: 'Generation model', desc: 'Builds the output from the spec' },
-        ],
-        screenshots: [
-          { src: '/images/kite/kite-01.png', label: 'Early concept: conversational vibe coding interface' },
-        ],
-      },
-      {
-        index: '02',
-        heading: 'Internal tool vibe coder',
-        takeaway: 'Right product, wrong audience — no clear market position.',
-        body: [
-          `We decoupled from LCAP but kept the same target: developers building internal tools. Research with real developers shaped the design — they needed to trust output, understand changes, and ship something maintainable. That led to a plan view for previewing agent actions before execution, inline status components, and early design previews to give users something concrete to react to. The product was coming together, but without a standout first moment. That's what led us to voice.`,
-        ],
-        screenshots: [
-          { src: '/images/kite/hmw.png', label: 'Research synthesis: insights clustered and converted to How Might We statements', after: 1 },
-          { src: '/images/kite/plan.png', label: 'Plan view: agent summarises intended actions before executing', after: 2 },
-          { src: '/images/kite/chat.png', label: 'Chat interface: inline status components showing agent activity', after: 2 },
-          { src: '/images/kite/preview.png', label: 'Design preview surfaced early in the conversation flow', after: 3 },
-        ],
-      },
-      {
-        index: '03',
-        heading: 'Voice-first',
-        status: 'scrapped',
-        takeaway: 'Strong in testing, but solving for delight in a closing market.',
-        framing: `This direction didn't make it to the final product, but it's worth including: the decision to scrap it is what forced the clarity that led to Kite.`,
-        screenshots: [
-          { src: '/images/kite/voice-wireframe.png', label: 'Early wireframe exploration of the voice conversation flow', after: 0 },
-          { src: '/images/kite/voice.png', label: 'Visual exploration: voice interface and overall product direction', after: 2 },
-        ],
-        body: [
-          `A quick prototype test validated it fast — users loved it. We integrated VAPI for speech input and I explored animation and visual identity to make the product feel reactive and alive. But the harder we pushed, the more problems surfaced: latency we couldn't design around, and a conversation model that never balanced speed with control. Meanwhile, the vibe coding window was closing. We had strong technology and no clear audience. That clarity sent us to a hackathon in India.`,
-        ],
-        callout: `"I can't believe I just built that by talking."`,
-        calloutAfter: 0,
-      },
-      {
-        index: '04',
-        heading: 'Small business ecommerce',
-        status: 'outcome',
-        takeaway: 'Specific user, specific gap, right fit for what we\'d built.',
-        body: [
-          `Scrapping voice forced a better question. Across three directions we'd built something real: a capable AI site builder. The technology worked — the problem was focus. The general-purpose vibe coding window had closed, but one market remained underserved: small business owners who needed to get online fast, without technical help. Existing platforms were adding AI as a feature. We could build around it from the start. The hackathon validated it quickly, and what came out was the clearest version of the product we'd had.`,
-        ],
-        // PLACEHOLDER: add stats here if you find secondary research data to support the SMB market opportunity
-        // e.g. % of SMBs without an online presence, Shopify TAM, etc. Only include if you have real sources.
-        stats: [],
-      },
-    ],
-
-    execution: [
-      `The pivot to small business ecommerce wasn't just a change in audience. It meant rethinking the product for people who'd never built anything before. We interviewed small business owners who were starting entirely from scratch: no existing brand, no website, just an idea. What they needed was clear: get from nothing to something appealing, fast. The developer-facing patterns we'd designed over the previous months gave way to something more immediate.`,
-      `We also made an early call to go mobile-first. SMB owners aren't sitting at desks. They're running their business from their phones, and the product had to meet them there. That decision shaped everything from the conversation UI down to how users would interact with their store after it was built.`,
-      `The conversation itself was redesigned around a different goal: not what to build, but what to sell and how to look doing it. Rather than prompting users for technical requirements, we guided them through branding: the kind of business they were starting, the feeling they wanted to project, the products they were selling. To make the output worth reacting to, we trained our model on a curated library of high-quality ecommerce designs, giving it a genuine design sensibility rather than just generation capability. The conversation would surface options, the user would choose, and within a few exchanges they had something that looked like a real store, something they could show a customer.`,
-      `Once users had a store they liked, editing had to feel just as fast. We built an inline editing experience designed for mobile: tap an element, type what you want to change, and it updates. No modals, no sidebars, no re-entering the conversation. The goal was to make the store feel genuinely malleable, something you could shape quickly from your phone between customers.`,
+    approach: [
+      `My first hypothesis was wrong, and I called it early. The opening direction was an AI tool for the enterprise low-code market, close to what Appsmith already knew. I designed a spec sheet architecture as a structured layer between conversation and generation, giving us control over LLM output. The spec sheet held up. The market didn't: LLMs generate freely, LCAP constrains tightly, and the category was stalling.`,
+      `The second direction validated the product concept but left us without a market position. I shifted to developers building internal tools and ran research to test a specific hypothesis: vibe coding tools were generating throwaway output nobody trusted enough to ship. The research confirmed it. I designed around that signal: a plan view so users could preview agent actions before execution, inline status during generation, early design previews to give something concrete to react to. The product was getting good. The problem: no clear reason a developer would choose it over anything else.`,
+      `I killed a direction after it tested well. I prototyped voice as the primary input and ran sessions fast. Users loved it. "I can't believe I just built that by talking" was real feedback from a real session. I cut it anyway: latency we couldn't design around, a model that couldn't balance speed and control, and a market window that was closing. Strong technology with no clear audience is a liability.`,
+      `Killing voice forced the right question: who actually needs what we've built? The general-purpose vibe coding window had closed, but small business owners who needed to get online fast, without technical help, were still wide open. Existing platforms were adding AI as a feature; we could build around it from the start. A hackathon validated the direction in days.`,
+      `The SMB pivot meant redesigning almost everything for people who'd never built anything before. I made mobile-first a hard constraint. SMB owners run their businesses from their phones, and anything that didn't work on a small screen got cut. The conversation was reframed around branding questions rather than technical requirements: the kind of business, the feeling to project, the products being sold. I trained the model on a curated library of high-quality ecommerce designs, betting that for users who can't hand-tune the result, looking credible on first impression matters as much as functional correctness.`,
+      `Once a store existed, editing had to feel as fast as building it. I designed a tap-to-edit model: select any element, type the change, it updates. No modals, no sidebars, no returning to the conversation. Conversation for building, direct manipulation for refining.`,
     ],
 
     screenshots: [
@@ -112,43 +52,31 @@ export const cases = [
     keyDecisions: [
       {
         heading: 'Training the model on design, not just generation',
-        body: `Tools like Lovable and Bolt generated functionally correct sites. We trained our model on curated, high-quality ecommerce designs — betting that for an audience who couldn't hand-tune the result, aesthetic quality mattered as much as functional correctness. First impressions had to carry more weight.`,
-        screenshots: [
-          { src: '/images/kite/theme-select-wireframe.png', label: 'Early concept: the AI generating brand personality and design variations side by side' },
-          { src: '/images/kite/theme-select.png', label: 'Final design: a conversation about brand voice surfaces styled options to choose from' },
-        ],
+        body: `Tools like Lovable and Bolt produced functionally correct sites. I trained our model on a curated library of high-quality ecommerce designs, betting that for users who can't hand-tune the result, looking credible on first impression matters more than pixel-perfect components. Aesthetic quality had to be a given, not a nice-to-have.`,
       },
       {
-        heading: 'Mobile-first as the primary experience',
-        body: `SMB owners run their business from their phones. We chose not to design for desktop and adapt — we built mobile-first and accepted the constraints. Anything that didn't work on a small screen got cut. What remained was the core of the product.`,
-        screenshots: [
-          { src: '/images/kite/mobile-01a.png', label: 'Swipeable design options with live preview cards' },
-          { src: '/images/kite/mobile-01b.png', label: 'Full-screen preview before confirming a design' },
-          { src: '/images/kite/mobile-02b.png', label: 'A second design option in the selection carousel' },
-          { src: '/images/kite/mobile-02a.png', label: 'Full-screen preview of the second option' },
-        ],
+        heading: 'Mobile-first as a hard constraint, not a preference',
+        body: `I didn't design for desktop and adapt. I built for mobile and accepted what that cut. The constraint was generative: it forced a simpler conversation flow, swipeable design options, and a tap-to-edit model that worked with a thumb. Everything that survived was load-bearing.`,
       },
       {
-        heading: 'Inline editing over returning to the conversation',
-        body: `After the AI builds a store, users want quick changes without re-entering a conversation. We built a tap-to-edit model: select any element, type the change, it updates. Conversation for building, direct manipulation for refining — edits feel immediate rather than instructional.`,
-        screenshotLabel: '[PLACEHOLDER: inline editing screen, element selected, edit in progress]',
+        heading: 'Direct manipulation over returning to the conversation',
+        body: `Once the AI builds a store, users want to change things, fast. I designed a tap-to-edit model: select any element, type the change, it updates. No modals, no sidebars, no re-entering the AI flow. The goal was to make the store feel genuinely malleable, not like an AI artifact you work around.`,
       },
     ],
 
     outcomes: [],
-    outcomes_note: null,
+    outcomes_note: `[TBD: add launch date and any metrics that can be shared publicly]`,
 
     reflection: [
-      `The most valuable thing this project taught me wasn't a design skill — it was how to operate with clarity inside genuine uncertainty. When the brief is open-ended and direction keeps changing, the antidote to freezing or thrashing is treating each phase as a real experiment: here's what we believe, here's how we'll test it. A pivot stops feeling like failure and starts feeling like learning. The prototypes we built weren't polished, but they were real enough that users could respond honestly — fidelity only needs to be high enough that the right questions get asked.`,
+      `Ten months of genuine open-endedness clarified something: the most useful thing I can do at the start of a project isn't to design. It's to figure out what's worth designing. Each direction was a real bet, run as a real experiment. Being wrong quickly is more valuable than being right slowly. The prototypes weren't polished. They were just real enough that users could respond honestly, and that was enough to move.`,
     ],
 
-    nda: true,
+    nda: `Launch performance, roadmap, and detailed business strategy are covered under NDA.`,
 
     // kept for [slug].astro compatibility
     problem: `In spring 2025, Appsmith made the decision to stop iterating on its existing low-code platform and build something entirely new.`,
     callout: null,
     insights: [],
-    approach: [],
     details: [],
     artifacts: [],
   },

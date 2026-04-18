@@ -17,7 +17,25 @@
       "Bash(brew install:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(gh repo:*)",
+      "Bash(vercel:*)",
+      "Bash(curl -sI https://danielmorris.nl)",
+      "Bash(curl -sI http://danielmorris.nl)",
+      "Bash(curl -sI https://www.danielmorris.nl)",
+      "Bash(curl -sv https://www.danielmorris.nl)",
+      "Bash(sed -n '120,140p' /Users/danielmorris/Sites/danielmorris-portfolio/src/styles/about.css)",
+      "Bash(sed -n '295,315p' /Users/danielmorris/Sites/danielmorris-portfolio/src/styles/case-study.css)",
+      "Bash(sed -n '100,115p' /Users/danielmorris/Sites/danielmorris-portfolio/src/styles/case-study.css)",
+      "Bash(sed -n '440,465p' /Users/danielmorris/Sites/danielmorris-portfolio/src/styles/case-study.css)",
+      "Bash(sed -n '70,78p' /Users/danielmorris/Sites/danielmorris-portfolio/src/styles/about.css)",
+      "Bash(sed -n '159,170p' /Users/danielmorris/Sites/danielmorris-portfolio/src/styles/about.css)",
+      "Bash(python3:*)",
+      "Bash(git checkout:*)",
+      "Bash(sips:*)",
+      "Bash(git push:*)",
+      "Bash(npx astro:*)",
+      "Bash(lsof:*)"
     ]
   }
 }

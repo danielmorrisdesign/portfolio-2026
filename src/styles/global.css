@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -22,7 +22,6 @@
   --accent:     #4afa82;
   --accent-dim: #1a3d25;
   --font-mono: 'Geist Mono', 'Menlo', 'Consolas', monospace;
-  --font-sans: 'Geist', system-ui, sans-serif;
 }
 
 [data-theme="light"] {
@@ -41,7 +40,7 @@
 html {
   background: var(--bg);
   color: var(--text-1);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 18px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

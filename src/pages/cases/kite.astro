@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
+import Carousel from '../../components/Carousel.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import { cases } from '../../data/cases.js';
 import '../../styles/case.css';
@@ -70,95 +71,13 @@ const item = cases.find(c => c.slug === 'kite');
         )}
       </section>
 
-      <!-- Finding the right problem -->
+      <!-- Approach -->
       <section class="cs-section">
-        <p class="cs-label">// finding the right problem</p>
-        <p class="cs-text" style="margin-bottom: 28px;">The brief was open-ended: build something AI-first that could become Appsmith's next flagship. We didn't know what that was or who it was for. Each pivot below was a real commitment — research, prototypes, user tests — before we had the signal to move on.</p>
-
-        <!-- Phase overview -->
-        <div class="cs-phase-nav">
-          {item.pivots.map((pivot, i) => (
-            <div class={`cs-phase-nav__item${pivot.status ? ` cs-phase-nav__item--${pivot.status}` : ''}${i === item.pivots.length - 1 ? ' cs-phase-nav__item--last' : ''}${i === 1 ? ' cs-phase-nav__item--pre-tangent' : ''}`}>
-              <span class="cs-phase-nav__num">// {pivot.index}</span>
-              <span class="cs-phase-nav__label">{pivot.heading}</span>
-              {pivot.status === 'scrapped' && <span class="cs-phase-nav__tag">scrapped</span>}
-            </div>
-          ))}
-        </div>
-
-        <!-- The pivots -->
-        <div class="cs-bets">
-          {item.pivots.map(pivot => (
-            <div class="cs-bet">
-              <span class="cs-bet__label">// {pivot.index}</span>
-              <h2 class="cs-bet__heading">{pivot.heading}</h2>
-              {pivot.takeaway && <p class="cs-pivot-takeaway">{pivot.takeaway}</p>}
-              {pivot.framing && <p class="cs-pivot-framing">{pivot.framing}</p>}
-              <div class="cs-bet__body">
-                {pivot.body.map((para, i) => (
-                  <>
-                    <p class="cs-text">{para}</p>
-                    {pivot.screenshots && (() => {
-                      const atIndex = pivot.screenshots.filter(s => s.after === i);
-                      if (atIndex.length === 0) return null;
-                      if (atIndex.length === 1) return (
-                        <div class="cs-screen-full">
-                          <img src={atIndex[0].src} alt={atIndex[0].label} class="cs-hero__img" />
-                          <p class="cs-caption">{atIndex[0].label}</p>
-                        </div>
-                      );
-                      return (
-                        <div class="cs-pivot-screens">
-                          {atIndex.map(s => (
-                            <figure class="cs-pivot-screen">
-                              <img src={s.src} alt={s.label} />
-                              <figcaption class="cs-caption">{s.label}</figcaption>
-                            </figure>
-                          ))}
-                        </div>
-                      );
-                    })()}
-                    {pivot.callout && pivot.calloutAfter === i && (
-                      <blockquote class="cs-callout">{pivot.callout}</blockquote>
-                    )}
-                    {pivot.pipeline && i === 1 && (
-                      <div class="cs-pipeline">
-                        {pivot.pipeline.map((node, j) => (
-                          <>
-                            <div class={`cs-pipeline__node${node.anchor ? ' cs-pipeline__node--anchor' : ''}`}>
-                              <span class="cs-pipeline__num">0{j + 1}</span>
-                              <span class="cs-pipeline__label">{node.label}</span>
-                              <span class="cs-pipeline__desc">{node.desc}</span>
-                            </div>
-                            {j < pivot.pipeline.length - 1 && (
-                              <span class="cs-pipeline__arrow">→</span>
-                            )}
-                          </>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ))}
-              </div>
-              {pivot.callout && pivot.calloutAfter === undefined && (
-                <blockquote class="cs-callout">{pivot.callout}</blockquote>
-              )}
-              {pivot.stats && (
-                <div class="cs-insights">
-                  {pivot.stats.map(stat => (
-                    <div class="cs-insight">
-                      <span class="cs-insight__value">{stat.value}</span>
-                      <span class="cs-insight__label">{stat.label}</span>
-                      <span class="cs-insight__note">{stat.note}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+        <p class="cs-label">// how I worked through it</p>
+        <div class="cs-prose">
+          {item.approach.map(para => <p class="cs-text">{para}</p>)}
         </div>
       </section>
-
 
       <!-- Key decisions -->
       <section class="cs-section">
@@ -168,7 +87,7 @@ const item = cases.find(c => c.slug === 'kite');
             <div class="cs-decision">
               <h2 class="cs-decision__heading">{decision.heading}</h2>
               <p class="cs-text">{decision.body}</p>
-              {decision.screenshots && decision.screenshots.length > 0 ? (
+              {decision.screenshots && decision.screenshots.length > 0 && (
                 <div class={`cs-decision-screens cs-decision-screens--${decision.screenshots.length}`}>
                   {decision.screenshots.map(s => (
                     <figure class="cs-decision-screen">
@@ -176,10 +95,6 @@ const item = cases.find(c => c.slug === 'kite');
                       <figcaption class="cs-caption">{s.label}</figcaption>
                     </figure>
                   ))}
-                </div>
-              ) : (
-                <div class="img-ph img-ph--16x9">
-                  <span class="img-ph__label">{decision.screenshotLabel}</span>
                 </div>
               )}
             </div>
@@ -200,8 +115,14 @@ const item = cases.find(c => c.slug === 'kite');
         </div>
         <p class="cs-outcomes-note">{item.outcomes_note}</p>
         {item.nda && (
-          <p class="cs-nda">Note: final design files and prototypes are covered under NDA.</p>
+          <p class="cs-nda">{typeof item.nda === 'string' ? item.nda : 'Note: final design files and prototypes are covered under NDA.'}</p>
         )}
+      </section>
+
+      <!-- Final product -->
+      <section class="cs-section">
+        <p class="cs-label">// final product</p>
+        <Carousel slides={item.screenshots} />
       </section>
 
       <!-- Reflection -->
