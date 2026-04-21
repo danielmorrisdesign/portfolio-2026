@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { work } from '../data/work.js';
-import { cases } from '../data/cases.js';
 import '../styles/home.css';
 ---
 
@@ -23,41 +22,18 @@ import '../styles/home.css';
         </div>
       </section>
 
-      <!-- Featured cases -->
-      <section class="cases fadein delay-7">
-        <p class="section-label">// cases</p>
-        <div class="cases-grid">
-          {cases.filter(item => item.slug === 'kite').map((item) => (
-            <a href={`/cases/${item.slug}`} class="case-card">
-              <div class="case-card-header">
-                <div class="case-card-heading">
-                  <span class="case-card-title">{item.title}</span>
-                  <p class="case-card-context">{item.context}</p>
-                </div>
-                <span class="case-card-arrow">→</span>
-              </div>
-              <p class="case-card-desc">{item.shortDesc}</p>
-              <div class="case-card-tags">
-                {item.tags.map(tag => <span class="case-card-tag">{tag}</span>)}
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
       <!-- Work list -->
       <section class="work" id="work">
         <p class="section-label">// experience</p>
         <ul class="work-list">
           {work.map((item, i) => (
             <li class="work-item fadein" style={`--delay: ${0.35 + i * 0.07}s`}>
-              <a href={`/work/${item.slug}`} class="work-link">
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="work-link">
                 <div class="work-body">
                   <span class="work-title">{item.title}</span>
                   <span class="work-tags">{item.tags.join(' · ')}</span>
                 </div>
                 <span class="work-period">{item.period}</span>
-                <span class="work-arrow">→</span>
               </a>
             </li>
           ))}
