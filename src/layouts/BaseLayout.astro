@@ -1,0 +1,63 @@
+---
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Daniel Morris",
+  description = "Portfolio of Daniel Morris, product designer.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    {/* Inline theme bootstrap — must run before paint to prevent FOUC */}
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          var theme = stored || (prefersDark ? "dark" : "light");
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          /* localStorage may be unavailable; fall back to default */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <button id="theme-toggle" type="button">Toggle theme</button>
+
+    <slot />
+
+    <script>
+      const button = document.getElementById("theme-toggle");
+      button?.addEventListener("click", () => {
+        const current = document.documentElement.dataset.theme ?? "light";
+        const next = current === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        try {
+          localStorage.setItem("theme", next);
+        } catch {
+          /* ignore */
+        }
+      });
+    </script>
+  </body>
+</html>
